@@ -37,5 +37,7 @@ Instenções
 - Destaque nas tarefas no dia atual
 - Modo de visualização de calendário
 
+- Colocar um campo de Título
+
 ## Banco
 ![](t_tarefas.jpg)

@@ -1,8 +1,23 @@
 # Aulo10AplicDB - correto Aula 12
+http://localhost/aulo10aplicdb/
+
+Instenções 
+
+- PHP Awesome Snippets
+- PHP Intelephense
+
  Aplicação com Banco de dados
 
  # Aula 12
  > Criar uma aplicação para cadastrp de tarefas.
+
+ ## Conexão com banco de dados
+
+ Para uma conexão com o BD é encessário saber:
+ - endereço do servidor de banco de dados(127.0.0.1 ou localhost)
+ - nome do banca de dados (bd_tarefas)
+ - usuário do banco de dados (root)
+ - senha do banco de dados (não tem)
  
  ## Requisitos funcionais
  ### ToDO

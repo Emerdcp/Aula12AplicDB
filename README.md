@@ -38,6 +38,22 @@ Instenções
 - Modo de visualização de calendário
 
 - Colocar um campo de Título
+- Colocar mensagem de "Tarefa Cadastrada" e retorna para tela anterior
 
 ## Banco
 ![](t_tarefas.jpg)
+
+
+
+
+
+# Criação do um array para trzer todos as tarefas
+```php
+$todasAsTarefas = mysqli_query($conexao, $sqlBusca);
+            
+            while($tarefa = mysqli_fetch_assoc($todasAsTarefas)){
+                echo "<pre>";
+                print_r($tarefa);
+                echo "<pre>";
+            }
+```

@@ -27,11 +27,32 @@
                 </div>
                 <div class="row pt-3">
                     <div class="col">
-                        <button type="submit" class="btn btn-success">Salvar</button>
+                        <button type="submit" class="btn btn-success">Salvar</button>   <a class='btn btn-warning'>Alterar</a>
                     </div>
                 </div>
             </form>
         </div>
+        <?php
+
+        include "conexao.php";
+        
+        $sqlBusca = "select * from t_tarefas";
+
+        $todasAsTarefas = mysqli_query($conexao, $sqlBusca);
+            
+        while($umaTarefa = mysqli_fetch_assoc($todasAsTarefas)){
+        ?>
+            <?php echo $umaTarefa['id']; ?>
+            <?php echo $umaTarefa['descricao']; ?>
+            <a class='btn btn-warning'>Alterar</a>
+            <a class='btn btn-danger' href="excluir-tarefa.php?id=<?php echo $umaTarefa['id']; ?>">Excluir</a>
+            <br>
+        <?php
+        }
+
+        mysqli_close($conexao);
+
+        ?>
     </main>
 </body>
 </html>

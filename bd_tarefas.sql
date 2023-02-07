@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Fev-2023 às 02:23
+-- Tempo de geração: 07-Fev-2023 às 02:33
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 8.1.10
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `bd_tarefas`
 --
-CREATE DATABASE IF NOT EXISTS `bd_tarefas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `bd_tarefas`;
 
 -- --------------------------------------------------------
 
@@ -31,18 +29,30 @@ USE `bd_tarefas`;
 
 CREATE TABLE `t_tarefas` (
   `id` int(11) NOT NULL,
-  `descricao` varchar(1000) NOT NULL
+  `descricao` varchar(1000) NOT NULL,
+  `responsavel` varchar(50) NOT NULL,
+  `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `t_tarefas`
 --
 
-INSERT INTO `t_tarefas` (`id`, `descricao`) VALUES
-(2, 'Estudar para aprova'),
-(5, 'Formatar meu computador'),
-(6, 'Formatar meu computador'),
-(7, 'Assistir aulas de Carro');
+INSERT INTO `t_tarefas` (`id`, `descricao`, `responsavel`, `status`) VALUES
+(2, 'Estudar para aprova - Cancelada', '', ''),
+(5, 'Formatar meu computador , cobrar R$ 70,00 reais', '', ''),
+(6, 'Formatar meu computador , cobrar R$ 80,00 reais', '', ''),
+(7, 'Assistir aulas de Carro', '', ''),
+(8, 'Formatar meu computador', '', ''),
+(11, 'teste 1 ', '', ''),
+(12, 'teste com responsável', '', ''),
+(13, 'teste com responsável Emerson', '', ''),
+(14, 'testes 1', '', ''),
+(15, 'Novo teste', '', ''),
+(16, 'teste com responsável', 'Emerson', ''),
+(17, 'Formatar meu computador', 'Emerson', ''),
+(18, 'Formatar meu computador', 'Emerson', ''),
+(19, 'Formatar meu computador', 'Emerson', 'Ativo');
 
 --
 -- Índices para tabelas despejadas
@@ -62,7 +72,7 @@ ALTER TABLE `t_tarefas`
 -- AUTO_INCREMENT de tabela `t_tarefas`
 --
 ALTER TABLE `t_tarefas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

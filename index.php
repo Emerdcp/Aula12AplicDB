@@ -1,58 +1,63 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarefas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<?php include_once "header.php";?>
+<?php include_once "mensagemAlteracao.php";?>
+<?php include_once "mensagemCadastro.php";?>
+<?php include_once "mensagemExcluir.php";?>
 
-</head>
-<body>
-    <main class="container">
-        <div class="row">
-            <div class="col">
-                <h1>Controle de Tarefas</h1>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h2>Nova Tarefa</h2>
-                </div>
-            </div>
-            <form name="nova-tarefa" action="inserir-tarefa.php" method="post">
-                <div class="row">
-                    <div class="col">
-                        <input name="tarefa" class="form-control" placeholder="Digite a descrição da nova tarefa">
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    <div class="col">
-                        <button type="submit" class="btn btn-success">Salvar</button>   <a class='btn btn-warning'>Alterar</a>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <?php
 
-        include "conexao.php";
-        
-        $sqlBusca = "select * from t_tarefas";
+<!-- Inicio Conteúdo -->
+<form class="d-flex justify-content-center align-items-center mb-4" action="inserir-tarefa.php" method="post">
+    <div class="form-outline flex-fill">
+        <input type="text" id="form2" class="form-control" placeholder="Nova tarefa" name="tarefa">
+    </div>
+    <div>
+        <input type="text" id="responsavel" class="form-control" placeholder="Responsável" name="responsavel">
+    </div>
+    <div>
+        <select name="status" id="status" class="form-select">
+            <option value="Ativo">Aberto</option>
+            <option value="Inatico">Parcial</option>
+            <option value="Bloqueado">Concluído</option>
+        </select>
 
-        $todasAsTarefas = mysqli_query($conexao, $sqlBusca);
-            
-        while($umaTarefa = mysqli_fetch_assoc($todasAsTarefas)){
-        ?>
-            <?php echo $umaTarefa['id']; ?>
-            <?php echo $umaTarefa['descricao']; ?>
-            <a class='btn btn-warning'>Alterar</a>
-            <a class='btn btn-danger' href="excluir-tarefa.php?id=<?php echo $umaTarefa['id']; ?>">Excluir</a>
-            <br>
-        <?php
-        }
+    </div>
+    <button type="submit" class="btn btn-dark ms-2"><i class="bi bi-save"></i> ADD</button>
+</form>
 
-        mysqli_close($conexao);
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-list-task"></i> Todas</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#"><i class="bi bi-list-nested"></i> Em execução</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#"><i class="bi bi-list-check"></i> Concluídas<i class="bi bi-0-circle"></i>
+        </a>
+    </li>
+</ul>
 
-        ?>
-    </main>
-</body>
-</html>
+
+<ul class="list-group mb-0">
+    <?php
+    include "conexao.php";
+    $sqlBusca = "select * from t_tarefas";
+    $todasAsTarefas = mysqli_query($conexao, $sqlBusca);
+    while ($umaTarefa = mysqli_fetch_assoc($todasAsTarefas)) {
+    ?>
+        <li class="list-group-item d-flex align-items-center border-0 mb-2 rounded fundo-cinza justify-content-between">
+            <?php echo $umaTarefa['id']; ?> -
+            <?php echo $umaTarefa['descricao']; ?> - 
+            <?php echo $umaTarefa['responsavel']; ?> - 
+            <?php echo $umaTarefa['status']; ?>
+            <span>
+                <a class='btn btn-light' href="alterar-tarefa.php?id=<?php echo $umaTarefa['id']?>"><i class="bi bi-pencil-fill"></i></a>
+                <a class='btn btn-light' href="excluir-tarefa.php?id=<?php echo $umaTarefa['id']?>"><i class="bi bi-trash3-fill"></i></a>
+            </span>
+        </li>
+    <?php
+    }
+    mysqli_close($conexao);
+    ?>
+</ul>
+<!-- Fim Conteúdo -->
+<?php include_once "footer.php";?>

@@ -24,10 +24,22 @@ Instenções
  A aplicação deve possibilitar:
  - Lista de todas as tarefas
  - Cadastrar uma nova tarefa
+ok   - Redirecionar para página inicial
+ok   - Notificação da ação
  - Alterar uma tarefa existente
+ok   - Redirecionar para página inicial
+ok   - Notificação da ação
  - Excluir uma terefa existente
+ok   - Redirecionar para página inicial
+ok   - Notificação da ação
+
+ok Fazer - Adicionar nome do responsável pela tarefa
+
+ Fazer - Status da tarefa
 
 ### Backlog
+- Notificação das ações (Tareda incluida com sucesso, Alteração realizada com sucesso, Exclusão realizada com sucesso)
+- ao adicionar tarefa, retornar com para página inicial com mensagem
 - Adicionar nome do responsável da tarefa
 - Data de início e fim da tarefa (previsto)
 - Status da Tarefa (Planejado, Em adamento, Concluído)

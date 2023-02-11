@@ -13,6 +13,6 @@ mysqli_query($conexao, $sqlGravar);
 
 mysqli_close($conexao);
 
-//header("location: index.php?msg=cadastro");
+header("location: index.php?msg=cadastro");
 
 ?>

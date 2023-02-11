@@ -13,9 +13,9 @@
         <input type="text" id="responsavel" class="form-control" placeholder="Responsável" name="responsavel">
     </div>
     <div>
-        <select class="form-control" name="status">
-            <option value="Planejada">Planejada</option>
-            <option value="Em Execução">Em Execução</option>
+        <select name="status" id="status" class="form-select">
+            <option value="Aberto">Aberto</option>
+            <option value="Parcial">Parcial</option>
             <option value="Concluído">Concluído</option>
         </select>
     </div>
@@ -24,58 +24,50 @@
 
 <ul class="nav justify-content-center">
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="index.php"><i class="bi bi-list-task"></i> Todas</a>
+        <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-list-task"></i> Todas</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="index.php?status=Planejada"><i class="bi bi-list-nested"></i> Planejadas</a>
+        <a class="nav-link" href="#"><i class="bi bi-list-nested"></i> Em execução</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="index.php?status=Em Execução "><i class="bi bi-list-nested"></i> Em Execução</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="index.php?status=Concluído"><i class="bi bi-list-check"></i> Concluídas<i class="bi bi-0-circle"></i>
+        <a class="nav-link" href="#"><i class="bi bi-list-check"></i> Concluídas<i class="bi bi-0-circle"></i>
         </a>
     </li>
 </ul>
 
 
-<ul class="list-group mb-0">
+<table class="table mb-0 table-hover">
     <?php
     include "conexao.php";
-    $condicao = "";
-    $status = $_GET["status"] ?? "";
-
-    if($status != ""){
-        $condicao = "where status='$status'";
-    }
-    $sqlBusca = "select * from t_tarefas $condicao";
+    $sqlBusca = "select * from t_tarefas";
     $todasAsTarefas = mysqli_query($conexao, $sqlBusca);
     while ($umaTarefa = mysqli_fetch_assoc($todasAsTarefas)) {
     ?>
-        <li class="list-group-item d-flex align-items-center border-0 mb-2 rounded fundo-cinza justify-content-between">
-            <div class="col-1"> 
-                <?php echo $umaTarefa['id']; ?>
-            </div>
-            <div class="col-5"> 
-                <?php echo $umaTarefa['descricao']; ?>
-            </div>
-            <div class="col-2">
-                <?php echo $umaTarefa['responsavel']; ?>
-            </div>
-            <div class="col-2">
+    
+        <tr class="md-2 fw-lighter">
+            <td>
+                <?php echo $umaTarefa['id'];?>
+            </td>
+            <td>
+                <<?php echo $umaTarefa['descricao'];?>
+            </td>
+            <td>
+                <?php echo $umaTarefa['responsavel'];?>
+            </td>
+            <td>
                 <?php echo $umaTarefa['status']; ?>
-            </div>
-            <div class="col-2">
+            </td>
+            <td>
                 <span>
                     <a class='btn btn-light' href="alterar-tarefa.php?id=<?php echo $umaTarefa['id']?>"><i class="bi bi-pencil-fill"></i></a>
                     <a class='btn btn-light' href="excluir-tarefa.php?id=<?php echo $umaTarefa['id']?>"><i class="bi bi-trash3-fill"></i></a>
                 </span>
-            </div>
-        </li>
+            </td>
+        </tr>
     <?php
     }
     mysqli_close($conexao);
     ?>
-</ul>
+</table>
 <!-- Fim Conteúdo -->
 <?php include_once "footer.php";?>

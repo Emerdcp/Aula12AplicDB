@@ -21,7 +21,7 @@ Instenções
  
  ## Requisitos funcionais
  ### ToDO
- A aplicação deve possibilitar:
+ok A aplicação deve possibilitar:
  - Lista de todas as tarefas
  - Cadastrar uma nova tarefa
 ok   - Redirecionar para página inicial
@@ -34,13 +34,12 @@ ok   - Redirecionar para página inicial
 ok   - Notificação da ação
 
 ok Fazer - Adicionar nome do responsável pela tarefa
-
- Fazer - Status da tarefa
+ok Fazer - Status da tarefa
 
 ### Backlog
 - Notificação das ações (Tareda incluida com sucesso, Alteração realizada com sucesso, Exclusão realizada com sucesso)
-- ao adicionar tarefa, retornar com para página inicial com mensagem
-- Adicionar nome do responsável da tarefa
+ok - ao adicionar tarefa, retornar com para página inicial com mensagem
+ok - Adicionar nome do responsável da tarefa
 - Data de início e fim da tarefa (previsto)
 - Status da Tarefa (Planejado, Em adamento, Concluído)
 - Consulta das tarefas por status
@@ -50,7 +49,7 @@ ok Fazer - Adicionar nome do responsável pela tarefa
 - Modo de visualização de calendário
 
 - Colocar um campo de Título
-- Colocar mensagem de "Tarefa Cadastrada" e retorna para tela anterior
+ok - Colocar mensagem de "Tarefa Cadastrada" e retorna para tela anterior
 
 ## Banco
 ![](t_tarefas.jpg)
